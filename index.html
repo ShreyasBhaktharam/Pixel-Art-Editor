@@ -9,19 +9,48 @@
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <div class="menubtn">❎</div>
+    <ul class="menu">
+        <li>New</li>
+        <li>Save Image</li>
+        <li>Save GIF</li>
+        <li>Install PWA (functionality to be added later)</li>
+    </ul>
+
     <div id="popup">
         <h3>Select the dimensions of the grid</h3>
-        <input type="text" id="width" value="16">X
-        <input type="text" id="width" value="16">
-        <button id="close">Ok</button>
+        <input type="text" id="width" value="16">X<input type="text" id="width" value="16">
+        <button id="close">OK</button>
     </div>
 
-    <div id="toolbar">
-        <span class="item"><i class="fas fa-pencil-alt"></i></span>
-        <span class="item"><i class="fas fa-eraser"></i></span>
-        <!-- Other toolbar items to be added later -->
+    <div id="frames" onblur="Frames.close()" tabindex="0">
+        <div class="btn" style="left: 10px;" onclick="document.querySelector('#frames #gallery').scrollLeft -= 100;"><i class="fa fa-chevron-left"></i></div>
+        <div class="btn" style="right: 10px;" onclick="document.querySelector('#frames #gallery').scrollLeft += 100"><i class="fa fa-chevron-right"></i></div>
+        <div id="gallery"></div>
+
     </div>
+
+
+    <canvas id="canvas"></canvas>
+
+
+
+    <div id="toolbar">
+        <span class="item" onclick="board.setmode(0)" style="background-color: grey;"><i class="fas fa-pencil-alt"></i></span>
+        <span class="item" onclick="board.setmode(1)"><i class="fas fa-eraser"></i></span>
+        <span class="item" onclick="board.setmode(2)"><i class="fas fa-fill"></i></span>
+        <span class="item" onclick="board.setmode(3)"><i class="fas fa-slash"></i></span>
+        <span class="item" onclick="board.setmode(4)"><i class="far fa-circle"></i></span>
+        <span class="item" onclick="board.setmode(5)"><i class="far fa-circle" style="transform: rotateX(45deg);"></i></span>
+        <span class="item" onclick="board.addFrame()"><i class="fas fa-plus"></i></span>
+        <span class="item" onclick="board.undo()"><i class="fas fa-undo"></i></span>
+        <span class="item" onclick="board.redo()"><i class="fas fa-redo"></i></span>
+        <span class="item" onclick="board.clear()"><i class="fas fa-trash"></i></span>
+        <span class="item" onclick="board.addImage()"><i class="fa fa-upload"></i></span>
+        <span class="item" onclick="Frames.open()"><i class="fas fa-eye"></i></span>
+    </div>
+
+    <div id="pallete"></div>
 
 
 
